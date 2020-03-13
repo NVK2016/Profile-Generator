@@ -28,7 +28,7 @@ function init() {
             // const profileHTML = html({ color, ...res.data })
             data = {...res.data}; 
             data.color = color; 
-            console.log('Github response Object: ' + data);
+            // console.log('Github response Object: ' + data);
            
             axios // axios call to get the stars
                 .get(`https://api.github.com/users/${github}/repos?per_page=100`)
@@ -39,9 +39,9 @@ function init() {
                         data.stars += res.data[i].stargazers_count;
                     }
 
-                    const profileHTML = html(data);
+                    const profileHTML = html(data); //assigned the created object 
 
-                    pdf.create(profileHTML, options).toFile(`./${github}-Profile-Generator.pdf`, function (err, res) {
+                    pdf.create(profileHTML, options).toFile(`./output/${github}-Profile-Generator.pdf`, function (err, res) {
                         if (err) return console.log(err);
                         console.log(res);
                     });
