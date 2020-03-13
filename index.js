@@ -23,7 +23,7 @@ const questions = [
 
   function init() {
     inquirer.prompt(questions).then(({ github, color }) => {
-      console.log("Searching...");
+      console.log("Searching...", github);
   
       api
         .getUser(github)
